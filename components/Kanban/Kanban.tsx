@@ -23,13 +23,18 @@ const tasksArr: TaskInterface[] = [
 
 
 const Kanban = ({ className, ...props }: KanbanProps) => {
-    const tasksFromLocalStorage: TaskInterface[] | null = JSON.parse(localStorage.getItem('tasksArr') as string);
-
-    const [tasks, setTasks] = useState<TaskInterface[]>(tasksFromLocalStorage || tasksArr)
-
+    const [checkedLocalStorage, setCheckedLocalStorage] = useState(false);
+    const [tasks, setTasks] = useState<TaskInterface[]>([]);
 
     useEffect(() => {
-        localStorage.setItem("tasksArr", JSON.stringify(tasks))
+        const localStorageData = localStorage.getItem("tasksArr");
+
+        setTasks((localStorageData) ? JSON.parse(localStorageData) : tasksArr);
+        setCheckedLocalStorage(true);
+    }, [])
+
+    useEffect(() => {
+        checkedLocalStorage && localStorage.setItem('tasksArr', JSON.stringify(tasks));
     }, [tasks]);
 
     return (
