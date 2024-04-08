@@ -1,6 +1,6 @@
 import { ColumnEnum } from "@/enums";
 
-export interface Task {
+export interface TaskInterface {
     title: string;
     id: string;
     column: ColumnEnum;

@@ -1,6 +1,6 @@
 import { ColumnEnum } from "@/enums";
 
 export interface DropIndicatorProps {
-    beforeId: number;
+    beforeId: string;
     column: ColumnEnum;
 }

@@ -4,11 +4,11 @@ import { KanbanProps } from "./Kanban.props";
 import { Column, Trash } from "..";
 import cn from 'classnames';
 import { ColumnEnum } from "@/enums";
-import { Task } from "@/interfaces";
+import { TaskInterface } from "@/interfaces";
 
 
 // All tasks that will be on start
-const tasksArr: Task[] = [
+const tasksArr: TaskInterface[] = [
     { title: "Закончить Kanban доску", id: "1", column: ColumnEnum.doing },
     { title: "Изучить FramerMotion", id: '2', column: ColumnEnum.backlog },
     { title: "Устроиться на стажировку", id: "3", column: ColumnEnum.backlog },
@@ -23,7 +23,7 @@ const tasksArr: Task[] = [
 
 
 const Kanban = ({ className, ...props }: KanbanProps) => {
-    const [tasks, setTasks] = useState<Task[]>(tasksArr)
+    const [tasks, setTasks] = useState<TaskInterface[]>(tasksArr)
 
     return (
         <div className={cn("flex gap-6 p-12 overflow-scroll h-full w-full", className)}
@@ -33,35 +33,35 @@ const Kanban = ({ className, ...props }: KanbanProps) => {
                 title="Бэклог"
                 column={ColumnEnum.backlog}
                 headingColor="text-neutral-500"
-                cards={tasks}
-                setCards={setTasks}
+                tasks={tasks}
+                setTasks={setTasks}
             />
 
             <Column
                 title="Сделать"
                 column={ColumnEnum.todo}
                 headingColor="text-yellow-200"
-                cards={tasks}
-                setCards={setTasks}
+                tasks={tasks}
+                setTasks={setTasks}
             />
 
             <Column
                 title="В процессе"
                 column={ColumnEnum.doing}
                 headingColor="text-blue-200"
-                cards={tasks}
-                setCards={setTasks}
+                tasks={tasks}
+                setTasks={setTasks}
             />
 
             <Column
                 title="Готово"
                 column={ColumnEnum.done}
                 headingColor="text-emerald-200"
-                cards={tasks}
-                setCards={setTasks}
+                tasks={tasks}
+                setTasks={setTasks}
             />
 
-            <Trash setTasks={setTasks} className="self-center mx-auto" />
+            <Trash setTasks={setTasks} className="mt-12" />
         </div>
     )
 }
