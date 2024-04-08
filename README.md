@@ -4,3 +4,4 @@
 - [Next.js](https://nextjs.org/)
 - [Typescript](https://www.typescriptlang.org/)
 - [Tailwindcss](https://tailwindcss.com/)
+- [Framer Motion](https://www.framer.com/)
