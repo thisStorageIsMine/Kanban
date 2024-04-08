@@ -1,5 +1,5 @@
 'use client'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { KanbanProps } from "./Kanban.props";
 import { Column, Trash } from "..";
 import cn from 'classnames';
@@ -7,7 +7,7 @@ import { ColumnEnum } from "@/enums";
 import { TaskInterface } from "@/interfaces";
 
 
-// All tasks that will be on start
+
 const tasksArr: TaskInterface[] = [
     { title: "Закончить Kanban доску", id: "1", column: ColumnEnum.doing },
     { title: "Изучить FramerMotion", id: '2', column: ColumnEnum.backlog },
@@ -23,7 +23,14 @@ const tasksArr: TaskInterface[] = [
 
 
 const Kanban = ({ className, ...props }: KanbanProps) => {
-    const [tasks, setTasks] = useState<TaskInterface[]>(tasksArr)
+    const tasksFromLocalStorage: TaskInterface[] | null = JSON.parse(localStorage.getItem('tasksArr') as string);
+
+    const [tasks, setTasks] = useState<TaskInterface[]>(tasksFromLocalStorage || tasksArr)
+
+
+    useEffect(() => {
+        localStorage.setItem("tasksArr", JSON.stringify(tasks))
+    }, [tasks]);
 
     return (
         <div className={cn("flex gap-6 p-12 overflow-scroll h-full w-full", className)}
