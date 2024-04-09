@@ -25,7 +25,7 @@ const Trash = ({ setTasks, className, ...props }: TrashProps) => {
     }
 
     return (
-        <div className={cn(`w-56 h-56 shrink-0 -order-1 border flex justify-center items-center rounded-md ${active ? "bg-red-800/50 border-red-900 text-red-400" : "bg-neutral-800/50 border-neutral-800 "}`, className)}
+        <div className={cn(`w-56 h-56 shrink-0  border flex justify-center items-center rounded-md ${active ? "bg-red-800/50 border-red-900 text-red-400" : "bg-neutral-800/50 border-neutral-800 "}`, className)}
             onDragLeave={handleDragLeave}
             onDragOver={(e) => handleDragOver(e)}
             onDrop={handleDrop}

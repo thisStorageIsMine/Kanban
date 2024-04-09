@@ -40,7 +40,7 @@ const Kanban = ({ className, ...props }: KanbanProps) => {
     return (
         <div className={cn(`flex items-center gap-6 overflow-scroll h-full w-full flex-col p-12 
         md:flex-wrap md:flex-row md:items-start md:justify-center 
-        xl:flex-nowrap xl:justify-normal xl:items-start`, className)}
+        xl:flex-nowrap xl:justify-normal xl:items-start `, className)}
             {...props}
         >
             <Column
