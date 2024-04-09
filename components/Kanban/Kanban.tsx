@@ -38,7 +38,9 @@ const Kanban = ({ className, ...props }: KanbanProps) => {
     }, [tasks]);
 
     return (
-        <div className={cn("flex gap-6 p-12 overflow-scroll h-full w-full", className)}
+        <div className={cn(`flex items-center gap-6 overflow-scroll h-full w-full flex-col p-12 
+        md:flex-wrap md:flex-row md:items-start md:justify-center 
+        xl:flex-nowrap xl:justify-normal xl:items-start`, className)}
             {...props}
         >
             <Column
@@ -73,7 +75,7 @@ const Kanban = ({ className, ...props }: KanbanProps) => {
                 setTasks={setTasks}
             />
 
-            <Trash setTasks={setTasks} className="mt-12" />
+            <Trash setTasks={setTasks} className="-order-1 md:order-none xl:mt-12" />
         </div>
     )
 }
