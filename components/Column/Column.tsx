@@ -116,7 +116,7 @@ const Column = ({ title, headingColor, column, tasks, setTasks, className, ...pr
     }
 
     return (
-        <div className={cn("w-full shrink-0 md:w-64", className)} {...props}
+        <div className={cn("w-full h-full shrink-0 md:w-64", className)} {...props}
             onDragLeave={handleDragLeave}
             onDragOver={e => handleDragOver(e)}
             onDrop={e => handleDrop(e)}
